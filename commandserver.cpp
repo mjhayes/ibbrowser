@@ -8,6 +8,11 @@ CommandServer::CommandServer(QString name)
     serverName = name;
 }
 
+CommandServer::~CommandServer()
+{
+    QLocalServer::removeServer(serverName);
+}
+
 bool CommandServer::startListening()
 {
     if (QLocalServer::removeServer(serverName) == false)

@@ -9,6 +9,7 @@ class CommandServer : public QObject
 
 public:
     CommandServer(QString name);
+    ~CommandServer();
     bool startListening();
 
 private:
