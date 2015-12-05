@@ -9,7 +9,6 @@ class CommandServer : public QObject
 
 public:
     CommandServer(QString name);
-    virtual ~CommandServer() {};
     bool startListening();
 
 private:
