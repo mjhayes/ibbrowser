@@ -1,0 +1,16 @@
+#!/bin/bash
+
+sockpath=/tmp/ibbrowser
+
+if [ ! -e "$sockpath" ]; then
+    echo "$sockpath does not exist!" > /dev/stderr
+    exit 1
+fi
+
+url=$(echo 'google.com' | dmenu "$@")
+if [ -z "$url" ]; then
+    echo 'no url provided!' > /dev/stderr
+    exit 1
+fi
+
+echo "$url" | netcat -U "$sockpath"
