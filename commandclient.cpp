@@ -14,8 +14,7 @@ void CommandClient::handleClientData()
     if (client->canReadLine() == false)
         return;
 
-    QByteArray lineBytes = client->readLine();
-    QString lineStr(lineBytes);
+    QString lineStr(client->readLine());
 
     /* Remove leading and trailing whitespace */
     lineStr = lineStr.trimmed();

@@ -9,6 +9,7 @@ CommandServer::CommandServer(QString name)
 
 CommandServer::~CommandServer()
 {
+    server.close();
     QLocalServer::removeServer(serverName);
 }
 
