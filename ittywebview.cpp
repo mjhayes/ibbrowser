@@ -10,8 +10,9 @@ IttyWebView::IttyWebView() : QWebView(), middleClick(false)
 
 QWebView *IttyWebView::createWindow(QWebPage::WebWindowType type)
 {
-    qDebug() << "createWindow";
+    Q_UNUSED(type);
 
+    qDebug() << "createWindow";
     return new IttyWebView();
 }
 
