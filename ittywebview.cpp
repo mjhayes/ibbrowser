@@ -2,6 +2,7 @@
 
 IttyWebView::IttyWebView() : QWebView(), middleClick(false)
 {
+    setAttribute(Qt::WA_DeleteOnClose, true);
     QObject::connect(this, SIGNAL(titleChanged(QString)), this, SLOT(setWindowTitle(QString)));
     QObject::connect(this, SIGNAL(linkClicked(QUrl)), this, SLOT(handleLinkClicked(QUrl)));
     this->setWindowFlags(this->windowFlags() | Qt::FramelessWindowHint);

@@ -27,5 +27,6 @@ void CommandClient::handleClientData()
 void CommandClient::handleClientDisconnect()
 {
     qDebug() << "Client disconnected";
-    delete this;
+    client->deleteLater();
+    deleteLater();
 }
