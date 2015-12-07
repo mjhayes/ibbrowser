@@ -1,8 +1,8 @@
 #!/bin/bash
 
-script_path=$(readlink -f $0)
+scriptpath=$(readlink -f $0)
 sockpath=/tmp/ibbrowser
-bookmarks_dir=${1:-${HOME}/bookmarks}
+bookmarkspath=${1:-${HOME}/bookmarks}
 shift
 
 if [ ! -e "$sockpath" ]; then
@@ -10,17 +10,17 @@ if [ ! -e "$sockpath" ]; then
     exit 1
 fi
 
-if [ ! -d "$bookmarks_dir" ]; then
-    echo "$bookmarks_dir does not exist!" > /dev/stderr
+if [ ! -d "$bookmarkspath" ]; then
+    echo "$bookmarkspath does not exist!" > /dev/stderr
     exit 1
 fi
 
-cd "$bookmarks_dir" || exit 1
+cd "$bookmarkspath" || exit 1
 res=$(find . -maxdepth 1 -type d -not -name '.' -printf '%f/\n' -or -type f -printf '%f\n' | dmenu)
 
 echo "res = $res"
 if [ -d "$res" ]; then
-    $script_path "$res"
+    $scriptpath "$res"
 else
     cat "$res" | netcat -U "$sockpath"
 fi

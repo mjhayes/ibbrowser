@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     commandserver.cpp \
-    commandclient.cpp
+    commandclient.cpp \
+    ittywebview.cpp
 
 HEADERS  += \
     commandserver.h \
-    commandclient.h
+    commandclient.h \
+    ittywebview.h
 
 FORMS    +=

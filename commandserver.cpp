@@ -1,7 +1,6 @@
-#include <QWebView>
-
 #include "commandclient.h"
 #include "commandserver.h"
+#include "ittywebview.h"
 
 CommandServer::CommandServer(QString name)
 {
@@ -40,8 +39,7 @@ void CommandServer::handleServerCommand(QString commandStr)
     qDebug() << "handleServerCommand: " << commandStr;
 
     /* Create, load, and show webview */
-    QWebView *wv = new QWebView();
-    wv->setWindowFlags(wv->windowFlags() | Qt::FramelessWindowHint);
+    IttyWebView *wv = new IttyWebView();
     wv->load(QUrl::fromUserInput(commandStr));
     wv->show();
 }

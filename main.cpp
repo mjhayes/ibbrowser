@@ -1,5 +1,4 @@
 #include <QApplication>
-#include <QWebView>
 #include "commandserver.h"
 
 #define LOCALSERVER_NAME "ibbrowser"
