@@ -14,7 +14,7 @@ public:
 
 private:
     QLocalServer server;
-    QString serverName;
+    const QString serverName;
 
 public slots:
     void handleServerConnect();

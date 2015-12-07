@@ -2,14 +2,12 @@
 #include "commandserver.h"
 #include "ittywebview.h"
 
-CommandServer::CommandServer(QString name)
+CommandServer::CommandServer(QString name) : serverName(name)
 {
-    serverName = name;
 }
 
 CommandServer::~CommandServer()
 {
-    server.close();
     QLocalServer::removeServer(serverName);
 }
 
