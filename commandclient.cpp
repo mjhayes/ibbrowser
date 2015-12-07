@@ -2,10 +2,11 @@
 
 CommandClient::CommandClient(QLocalSocket *client)
 {
+    client->setParent(this);
     this->client = client;
 
-    QObject::connect(client, SIGNAL(readyRead()), this, SLOT(handleClientData()));
-    QObject::connect(client, SIGNAL(disconnected()), this, SLOT(handleClientDisconnect()));
+    QObject::connect(client, SIGNAL(readyRead()), SLOT(handleClientData()));
+    QObject::connect(client, SIGNAL(disconnected()), SLOT(deleteLater()));
 }
 
 void CommandClient::handleClientData()
@@ -22,11 +23,4 @@ void CommandClient::handleClientData()
     qDebug() << lineStr;
 
     emit commandReceived(lineStr);
-}
-
-void CommandClient::handleClientDisconnect()
-{
-    qDebug() << "Client disconnected";
-    client->deleteLater();
-    deleteLater();
 }

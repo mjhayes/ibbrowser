@@ -18,7 +18,6 @@ signals:
 
 public slots:
     void handleClientData();
-    void handleClientDisconnect();
 };
 
 #endif // COMMANDCLIENT_H

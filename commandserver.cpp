@@ -18,7 +18,7 @@ bool CommandServer::startListening()
     if (QLocalServer::removeServer(serverName) == false)
         return false;
 
-    QObject::connect(&server, SIGNAL(newConnection()), this, SLOT(handleServerConnect()));
+    QObject::connect(&server, SIGNAL(newConnection()), SLOT(handleServerConnect()));
 
     if (server.listen(serverName) == false)
         return false;
@@ -32,7 +32,7 @@ void CommandServer::handleServerConnect()
 {
     qDebug() << "handleServerConnect";
     CommandClient *cc = new CommandClient(server.nextPendingConnection());
-    QObject::connect(cc, SIGNAL(commandReceived(QString)), this, SLOT(handleServerCommand(QString)));
+    QObject::connect(cc, SIGNAL(commandReceived(QString)), SLOT(handleServerCommand(QString)));
 }
 
 void CommandServer::handleServerCommand(QString commandStr)
